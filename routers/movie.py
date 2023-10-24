@@ -1,4 +1,5 @@
 # algoritmo que nos permite trabajar con routers
+###
 from fastapi import APIRouter
 # importamnos el modulo fastapi,body,path
 from fastapi import Depends,Path, Query, Request, HTTPException
@@ -38,6 +39,7 @@ def get_movies() -> List[Movie]:
     return JSONResponse(status_code=200,content=jsonable_encoder(result))
 
 # usamos Session y filter, path para validar parametros
+
 @movie_router.get('/movies/{id}', tags=['movies'], response_model=Movie)
 def get_movie(id: int = Path(ge=1, le=2000)) -> Movie:
     db = Session()
